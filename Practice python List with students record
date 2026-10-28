@@ -1,0 +1,56 @@
+
+# Student Records Using Python Lists
+
+names = []
+marks = []
+
+n = int(input("Enter number of students: "))
+
+# Store student names and marks
+for i in range(n):
+    name = input("Enter student name: ")
+    mark = float(input("Enter student marks: "))
+
+    names.append(name)
+    marks.append(mark)
+
+# Display all student records
+print("\n--- Student Records ---")
+for i in range(n):
+    print(names[i], ":", marks[i])
+
+# Search for a student
+search_name = input("\nEnter name to search: ")
+if search_name in names:
+    index = names.index(search_name)
+    print("Student found:", names[index])
+    print("Marks:", marks[index])
+else:
+    print("Student not found.")
+
+# Sort students by marks (highest to lowest)
+sorted_records = sorted(
+    zip(names, marks),
+    key=lambda record: record[1],
+    reverse=True
+)
+
+print("\n--- Students Sorted by Marks ---")
+for name, mark in sorted_records:
+    print(name, ":", mark)
+
+# Find highest and lowest scores
+highest = max(marks)
+lowest = min(marks)
+
+print("\nHighest Score:", highest)
+print("Topper(s):")
+for i in range(n):
+    if marks[i] == highest:
+        print(names[i])
+
+print("\nLowest Score:", lowest)
+print("Student(s) with Lowest Score:")
+for i in range(n):
+    if marks[i] == lowest:
+        print(names[i])
